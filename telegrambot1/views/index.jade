@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to our Telegram Bot Beta
+
+  // Wrapper
+  #wrapper
+
+    // PAIR INFO
+    #pairInfo
+      h2 Pair Info
+      p
+        strong Pair:
+        |  <span id='pairInfoName'></span>
+        br
+        strong Exchange:
+        |  <span id='pairInfoExchange'></span>
+        br
+        strong Technical Indicators:
+        |  <span id='pairInfoTechnicalIndicators'></span>
+        br
+        strong Timeframe:
+        |  <span id='pairInfoTimeframe'></span>
+    // /PAIR INFO
+
+    // PAIR LIST
+    h2 Pair List
+    #pairList
+      table
+        thead
+          th Pair
+          th Exchange
+          th Technical Indicators
+          th Timeframe
+          th Delete?
+        tbody
+    // /PAIR LIST
+
+    // ADD PAIR
+    h2 Add Pair
+    #addPair
+      fieldset
+        input#inputPairName(type='text', placeholder='Pair name')
+        input#inputPairExchange(type='text', placeholder='Exchange')
+        br
+        input#inputPairTechnicalIndicators(type='text', placeholder='Technical Indicators')
+        input#inputPairTimeframe(type='text', placeholder='Timeframe')
+        br
+        button#btnAddPair Add Pair
+    // /ADD PAIR
+
+  // /WRAPPER

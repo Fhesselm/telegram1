@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/nodetest2/public/javascripts/global.js"
+            "program": "${workspaceFolder}/telegrambot1/public/javascripts/global.js"
         }
     ]
 }

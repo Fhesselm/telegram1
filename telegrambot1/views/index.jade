@@ -42,10 +42,28 @@ block content
     #addPair
       fieldset
         input#inputPairName(type='text', placeholder='Pair name')
-        input#inputPairExchange(type='text', placeholder='Exchange')
+        input#inputPairExchange(type='text', placeholder='Exchange', list='exchanges', multiple='')
+        datalist#exchanges
+          option(value='Bitmex')
+          option(value='Bitfinex')
+          option(value='Binance')
         br
-        input#inputPairTechnicalIndicators(type='text', placeholder='Technical Indicators')
-        input#inputPairTimeframe(type='text', placeholder='Timeframe')
+        input#inputPairTechnicalIndicators(type='text', placeholder='Technical Indicators', list='tindicators', multiple='')
+        datalist#tindicators
+          option(value='EMA')
+          option(value='MA')
+          option(value='RSI')
+          option(value='MACD')
+        input#inputPairTimeframe(type='text', placeholder='Timeframe', list='timeframes', multiple='')
+        datalist#timeframes
+          option(value='1min')
+          option(value='5min')
+          option(value='15min')
+          option(value='30min')
+          option(value='1h')
+          option(value='2h')
+          option(value='4h')
+          option(value='1d')
         br
         button#btnAddPair Add Pair
     // /ADD PAIR

@@ -12,12 +12,13 @@ var db = monk('localhost:27017/telegrambot1');
 // Routing
 var indexRouter = require('./routes/index');
 var pairsRouter = require('./routes/pairs');
+var telegramRouter = require('./routes/telegram');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use(function(req,res,next){
 
 app.use('/', indexRouter);
 app.use('/pairs', pairsRouter);
+app.use('/telegram', telegramRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

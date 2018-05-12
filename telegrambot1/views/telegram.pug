@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p This is the Telegrame Page for sending Messages
+  #telegram
+    input#inputTelegramMessage(type='text', placeholder='Telegram message to send...')
+    button#btnSendTelegramMessage Send Telegram message

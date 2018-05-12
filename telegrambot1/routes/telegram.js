@@ -3,22 +3,13 @@ var router = express.Router();
 
 /* GET Telegram page. */
 router.get('/telegram', function(req, res) {
-  var db = req.db;
-  var collection = db.get('paircollection');
-  collection.find({},{},function(e,docs){
-    res.json(docs);
-  });
+    console.log("I am in /telegram");
+    res.render('telegram', { title: 'Test test' });
 });
 
 /* POST to sendTelegram. */
 router.post('/sendTelegram', function(req, res) {
-  var db = req.db;
-  var collection = db.get('paircollection');
-  collection.insert(req.body, function(err, result){
-    res.send(
-      (err === null) ? { msg: '' } : { msg: err }
-    );
-  });
+    console.log("I will post the following message in telegram " +req.body.text);
 });
 
 module.exports = router;

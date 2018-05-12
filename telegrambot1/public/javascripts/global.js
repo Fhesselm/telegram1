@@ -13,6 +13,9 @@ $(document).ready(function() {
   // Add Pair button click
   $('#btnAddPair').on('click', addPair);
 
+  // Send telegram message
+  $('#btnSendTelegramMessage').on('click', sendTelegramMessage);
+
   // Delete Pair link click
   $('#pairList table tbody').on('click', 'td a.linkdeletepair', deletePair);
 
@@ -71,6 +74,36 @@ function showPairInfo(event) {
     $('#pairInfoTimeframe').text(thisPairObject.timeframe);
 
 };
+
+
+// Send Telegram Message
+function sendTelegramMessage(event) {
+    event.preventDefault();
+    
+    let message = {
+      'text': $('#inputTelegramMessage').val(),
+    }
+
+    // Use AJAX to post the object to our addpair service
+    $.ajax({
+      type: 'POST',
+      data: message,
+      url: '/telegram/sendTelegram',
+      dataType: 'JSON'
+    }).done(function( response ) {
+
+      // Check for successful (blank) response
+      if (response.msg === '') {
+
+      }
+      else {
+
+        // If something goes wrong, alert the error message that our service returned
+        alert('Error: ' + response.msg);
+
+      }
+    });
+}
 
 // Add Pair
 function addPair(event) {

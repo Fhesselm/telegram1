@@ -80,29 +80,36 @@ function showPairInfo(event) {
 function sendTelegramMessage(event) {
     event.preventDefault();
     
-    let message = {
-      'text': $('#inputTelegramMessage').val(),
+    if ($('#inputTelegramMessage').val() !== '') {
+        let message = {
+          'text': $('#inputTelegramMessage').val(),
+        }
+    
+        // Use AJAX to post the object to our addpair service
+        $.ajax({
+          type: 'POST',
+          data: message,
+          url: '/telegram/sendTelegram',
+          dataType: 'JSON'
+        }).done(function( response ) {
+    
+          // Check for successful (blank) response
+          if (response.msg === '') {
+    
+          }
+          else {
+    
+            // If something goes wrong, alert the error message that our service returned
+            alert('Error: ' + response.msg);
+    
+          }
+        });
     }
-
-    // Use AJAX to post the object to our addpair service
-    $.ajax({
-      type: 'POST',
-      data: message,
-      url: '/telegram/sendTelegram',
-      dataType: 'JSON'
-    }).done(function( response ) {
-
-      // Check for successful (blank) response
-      if (response.msg === '') {
-
-      }
-      else {
-
-        // If something goes wrong, alert the error message that our service returned
-        alert('Error: ' + response.msg);
-
-      }
-    });
+    else {
+      // If no Telegram message has been typed yet
+      alert('Please fill in the message field');
+      return false;
+    }
 }
 
 // Add Pair

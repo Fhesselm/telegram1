@@ -3,7 +3,6 @@ var router = express.Router();
 
 /* GET Telegram page. */
 router.get('/telegram', function(req, res) {
-    console.log("I am in /telegram");
     res.render('telegram', { title: 'Test test' });
 });
 
